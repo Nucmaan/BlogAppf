@@ -11,7 +11,7 @@ function ViewPost() {
 
   useEffect(() => {
     axios
-      .get(`/api/post/getSinglePost/${id}`)
+      .get(`https://onepost-jkw9.onrender.com/api/post/getSinglePost/${id}`)
       .then((response) => {
         setPost(response.data.post); 
       })
@@ -23,7 +23,7 @@ function ViewPost() {
   const handleDelete = (postId) => {
     axios
       .delete(
-        `/api/post/deleteSinglePost/${postId}`
+        `https://onepost-jkw9.onrender.com/api/post/deleteSinglePost/${postId}`
       )
       .then((response) => {
         navigate("/home"); 

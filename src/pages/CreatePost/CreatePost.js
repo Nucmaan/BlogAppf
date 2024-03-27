@@ -27,7 +27,7 @@ function CreatePost() {
 
     try {
       const response = await axios.post(
-        "/api/post/createPost",
+        "https://onepost-jkw9.onrender.com/api/post/createPost",
         formData
       );
       console.log(response);

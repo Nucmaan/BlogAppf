@@ -13,7 +13,7 @@ function Edit() {
 
   useEffect(() => {
     axios
-      .get(`/api/post/getSinglePost/${id}`)
+      .get(`https://onepost-jkw9.onrender.com/api/post/getSinglePost/${id}`)
       .then((response) => {
         const postData = response.data.post;
         setTitle(postData.title);
@@ -36,7 +36,7 @@ function Edit() {
     }
 
     axios
-      .put(`/api/post/updatePost/${id}`, formData)
+      .put(`https://onepost-jkw9.onrender.com/api/post/updatePost/${id}`, formData)
       .then((response) => {
       
         Navigate("/home");

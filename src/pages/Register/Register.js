@@ -15,7 +15,7 @@ function Register() {
     e.preventDefault();
   
     try {
-      const response = await axios.post("/api/user/Register", {
+      const response = await axios.post("https://onepost-jkw9.onrender.com/api/user/Register", {
         fullName: fullName,
         email: email,
         password: password
