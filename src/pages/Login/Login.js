@@ -39,7 +39,8 @@ function Login() {
       Navigate("/home");
     
     } catch (error) {
-      dispatch(setError(error));
+      console.error(error);
+      dispatch(setError(error.response.data.error || 'An unexpected error occurred'));
     }
   };
 
