@@ -26,7 +26,7 @@ function Login() {
       dispatch(setLoading());
 
       const response = await axios.post(
-        "/api/user/login",
+        "https://onepost-jkw9.onrender.com/api/user/login",
         {
           email: email,
           password: password,
