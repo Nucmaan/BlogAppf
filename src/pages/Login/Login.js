@@ -22,6 +22,7 @@ function Login() {
       });
       
       const userRedux = response.data.existingUser;
+      console.log(userRedux);
       dispatch(fullInfo(userRedux));
       
       navigate('/home');
