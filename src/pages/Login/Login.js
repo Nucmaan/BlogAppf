@@ -1,43 +1,30 @@
-import React, { useState } from "react";
-import {  useDispatch } from "react-redux";
-import {
-  fullInfo,
-  setLoading,
-  setError,
-} from "../../app/features/User/userSclice";
-
-import { Link, useNavigate } from "react-router-dom";
-
-import axios from "axios";
+// Login.js
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { fullInfo, setLoading, setError } from '../../app/features/User/userSlice';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const Navigate = useNavigate();
-
-  
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleInput = async (e) => {
+  const handleInput = async e => {
     e.preventDefault();
-
     try {
       dispatch(setLoading());
 
-      const response = await axios.post(
-        "https://onepost-jkw9.onrender.com/api/user/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
-      const Userredux = response.data.existingUser;
-     
-      dispatch(fullInfo(Userredux));
+      const response = await axios.post('https://onepost-jkw9.onrender.com/api/user/login', {
+        email: email,
+        password: password,
+      });
       
-      Navigate("/home");
-    
+      const userRedux = response.data.existingUser;
+      dispatch(fullInfo(userRedux));
+      
+      navigate('/home');
     } catch (error) {
       console.error(error);
       dispatch(setError(error.response.data.error || 'An unexpected error occurred'));
@@ -57,7 +44,7 @@ function Login() {
                   type="email"
                   className="form-control"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-3">
@@ -66,7 +53,7 @@ function Login() {
                   type="password"
                   className="form-control"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                 />
               </div>
               <button type="submit" className="btn btn-primary">
